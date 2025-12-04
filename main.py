@@ -17,6 +17,10 @@ app.mount("/.well-known", StaticFiles(directory=wellknown_path), name="static")
 with open(historical_data, "r") as f:
     data = json.load(f)
 
+@app.get('/countries/{country}')
+def cities(country: str):
+        return list(data[country].keys())
+
 @app.get('/')
 def root():
     """
